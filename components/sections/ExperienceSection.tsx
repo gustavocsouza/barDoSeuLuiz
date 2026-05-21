@@ -122,6 +122,7 @@ export function ExperienceSection() {
           position: 'relative',
         }}
       >
+      <div className="section-container" style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', flex: 1 }}>
         {/* Corner tags */}
         <div
           style={{
@@ -234,7 +235,8 @@ export function ExperienceSection() {
           </span>
           <div style={{ width: '40px', height: '1px', background: 'rgba(244,239,228,0.15)' }} />
         </div>
-      </div>
+      </div>{/* /section-container */}
+      </div>{/* /pinRef */}
     </section>
   )
 }

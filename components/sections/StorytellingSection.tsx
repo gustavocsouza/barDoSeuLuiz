@@ -117,21 +117,23 @@ export function StorytellingSection() {
       style={{ backgroundColor: '#F4EFE4' }}
     >
       {/* ── Section header ──────────────────────────────────── */}
-      <div
-        className="section-rule"
-        style={{
-          padding: '2.5rem 3.5rem',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-        }}
-      >
-        <span style={{ fontFamily: "var(--font-grotesk), sans-serif", fontSize: '0.62rem', letterSpacing: '0.28em', color: '#6B6B6B', textTransform: 'uppercase' }}>
-          The Process
-        </span>
-        <span style={{ fontFamily: "var(--font-grotesk), sans-serif", fontSize: '0.62rem', letterSpacing: '0.28em', color: '#6B6B6B', textTransform: 'uppercase' }}>
-          Iron Crow Brewery
-        </span>
+      <div className="section-rule">
+        <div
+          className="section-container"
+          style={{
+            padding: '2.5rem 3.5rem',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}
+        >
+          <span style={{ fontFamily: "var(--font-grotesk), sans-serif", fontSize: '0.62rem', letterSpacing: '0.28em', color: '#6B6B6B', textTransform: 'uppercase' }}>
+            The Process
+          </span>
+          <span style={{ fontFamily: "var(--font-grotesk), sans-serif", fontSize: '0.62rem', letterSpacing: '0.28em', color: '#6B6B6B', textTransform: 'uppercase' }}>
+            Iron Crow Brewery
+          </span>
+        </div>
       </div>
 
       {/* ── Story panels ─────────────────────────────────────── */}

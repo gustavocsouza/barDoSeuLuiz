@@ -99,14 +99,16 @@ export function AboutSection() {
       style={{ backgroundColor: '#F4EFE4', position: 'relative' }}
     >
       {/* ── Section header ──────────────────────────────────── */}
-      <div
-        className="section-rule"
-        style={{ padding: '2.5rem 3.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
-      >
-        <span style={{ fontFamily: "var(--font-grotesk), sans-serif", fontSize: '0.62rem', letterSpacing: '0.28em', color: '#6B6B6B', textTransform: 'uppercase' }}>
-          Our Story
-        </span>
-        <div style={{ width: '40px', height: '1px', background: 'rgba(10,10,10,0.15)' }} />
+      <div className="section-rule">
+        <div
+          className="section-container"
+          style={{ padding: '2.5rem 3.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
+        >
+          <span style={{ fontFamily: "var(--font-grotesk), sans-serif", fontSize: '0.62rem', letterSpacing: '0.28em', color: '#6B6B6B', textTransform: 'uppercase' }}>
+            Our Story
+          </span>
+          <div style={{ width: '40px', height: '1px', background: 'rgba(10,10,10,0.15)' }} />
+        </div>
       </div>
 
       {/* ── Main grid ────────────────────────────────────────── */}

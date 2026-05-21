@@ -156,8 +156,9 @@ export function HeroSection() {
       {/* ── Top nav bar ──────────────────────────────────────────*/}
       <header
         ref={eyebrowRef}
-        className="relative z-50 flex items-center justify-between px-8 py-6 md:px-14"
+        className="relative z-50 w-full"
       >
+      <div className="section-container flex items-center justify-between px-8 py-6 md:px-14">
         <div
           style={{
             fontFamily: "var(--font-bebas), sans-serif",
@@ -204,10 +205,11 @@ export function HeroSection() {
             </a>
           ))}
         </nav>
+      </div>{/* /section-container */}
       </header>
 
       {/* ── Hero body – typography ──────────────────────────────*/}
-      <div className="relative z-20 flex flex-col px-8 md:px-14" style={{ marginTop: 'auto' }}>
+      <div className="section-container relative z-20 flex flex-col px-8 md:px-14" style={{ marginTop: 'auto' }}>
 
         {/* Subheading above big title */}
         <p
@@ -243,7 +245,7 @@ export function HeroSection() {
 
       {/* ── Bottom bar ─────────────────────────────────────────── */}
       <div
-        className="relative z-20 flex items-end justify-between px-8 pb-8 md:px-14"
+        className="section-container relative z-20 flex items-end justify-between px-8 pb-8 md:px-14"
         style={{ paddingBottom: '2.5rem' }}
       >
         {/* Subtitle left */}

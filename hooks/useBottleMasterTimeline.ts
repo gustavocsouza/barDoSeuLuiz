@@ -147,6 +147,19 @@ export function useBottleMasterTimeline(
           masterTL.progress(self.progress)
         },
       })
+
+      // ── CTA z-index fix ──────────────────────────────────────
+      // Drop bottle behind CTA content (z:10) when section enters
+      ScrollTrigger.create({
+        trigger: '#visit',
+        start: 'top 65%',
+        onEnter: () => {
+          gsap.set(wrapper, { zIndex: 5 })
+        },
+        onLeaveBack: () => {
+          gsap.set(wrapper, { zIndex: 100 })
+        },
+      })
     })
 
     return () => {

@@ -132,8 +132,9 @@ export function MenuSection() {
       {/* ── Header ────────────────────────────────────────────── */}
       <div
         ref={headerRef}
-        style={{ padding: 'clamp(3rem, 6vw, 6rem) clamp(1.5rem, 5vw, 3.5rem)', borderTop: '1px solid rgba(10,10,10,0.08)' }}
+        style={{ borderTop: '1px solid rgba(10,10,10,0.08)' }}
       >
+      <div className="section-container" style={{ padding: 'clamp(3rem, 6vw, 6rem) clamp(1.5rem, 5vw, 3.5rem)' }}>
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
           <div>
             <p style={{ fontFamily: "var(--font-grotesk), sans-serif", fontSize: '0.62rem', letterSpacing: '0.3em', color: '#C41E3A', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
@@ -155,9 +156,11 @@ export function MenuSection() {
             Four rotating recipes. Brewed on-site. Always fresh.
           </p>
         </div>
-      </div>
+      </div>{/* /section-container */}
+      </div>{/* /headerRef */}
 
       {/* ── Cards grid ───────────────────────────────────────── */}
+      <div className="section-container" style={{ padding: '0 clamp(1.5rem, 5vw, 3.5rem)' }}>
       <div
         ref={gridRef}
         style={{
@@ -166,7 +169,6 @@ export function MenuSection() {
           gap: '1px',
           backgroundColor: 'rgba(10,10,10,0.08)',
           border: '1px solid rgba(10,10,10,0.08)',
-          margin: '0 clamp(1.5rem, 5vw, 3.5rem)',
         }}
       >
         {BEERS.map((beer, i) => (
@@ -318,7 +320,8 @@ export function MenuSection() {
             </div>
           </div>
         ))}
-      </div>
+      </div>{/* /gridRef */}
+      </div>{/* /section-container */}
     </section>
   )
 }
