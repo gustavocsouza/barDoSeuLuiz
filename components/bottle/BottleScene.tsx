@@ -18,6 +18,7 @@ export function BottleScene() {
      */
     <div
       aria-hidden="true"
+      className="bottle-wrapper"
       style={{
         position: 'fixed',
         top: '50%',
@@ -28,7 +29,6 @@ export function BottleScene() {
         zIndex: 100,
         pointerEvents: 'none',
         willChange: 'transform, opacity',
-        width: 'clamp(100px, 16vw, 240px)',
       }}
       ref={wrapperRef}
     >

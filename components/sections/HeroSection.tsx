@@ -7,7 +7,6 @@ import SplitType from 'split-type'
 export function HeroSection() {
   const sectionRef   = useRef<HTMLElement>(null)
   const bgTextRef    = useRef<HTMLDivElement>(null)
-  const eyebrowRef   = useRef<HTMLDivElement>(null)
   const taglineRef   = useRef<HTMLHeadingElement>(null)
   const subtitleRef  = useRef<HTMLParagraphElement>(null)
   const scrollHintRef = useRef<HTMLDivElement>(null)
@@ -27,7 +26,7 @@ export function HeroSection() {
 
     const ctx = gsap.context(() => {
       // ── Set initial hidden states ────────────────────────────
-      gsap.set([eyebrowRef.current, subtitleRef.current, scrollHintRef.current, lineRef.current], {
+      gsap.set([subtitleRef.current, scrollHintRef.current, lineRef.current], {
         opacity: 0, y: 20,
       })
 
@@ -51,13 +50,6 @@ export function HeroSection() {
           ease: 'power3.out',
         }, 0.2)
       }
-
-      // Eyebrow text
-      tl.to(eyebrowRef.current, {
-        opacity: 1, y: 0,
-        duration: 0.7,
-        ease: 'power3.out',
-      }, 0.5)
 
       // Main headline chars — each flies in with clip
       if (splitTagline?.chars) {
@@ -153,63 +145,11 @@ export function HeroSection() {
         CROW
       </div>
 
-      {/* ── Top nav bar ──────────────────────────────────────────*/}
-      <header
-        ref={eyebrowRef}
-        className="relative z-50 w-full"
-      >
-      <div className="section-container flex items-center justify-between px-8 py-6 md:px-14">
-        <div
-          style={{
-            fontFamily: "var(--font-bebas), sans-serif",
-            fontSize: '1.15rem',
-            letterSpacing: '0.18em',
-            color: '#0A0A0A',
-          }}
-        >
-          IRON CROW
-        </div>
-
-        {/* Marquee strip */}
-        <div className="hidden md:flex items-center gap-2 overflow-hidden" style={{ maxWidth: '320px' }}>
-          <div className="h-px w-8 bg-black/20" />
-          <span
-            style={{
-              fontFamily: "var(--font-grotesk), sans-serif",
-              fontSize: '0.62rem',
-              letterSpacing: '0.22em',
-              color: '#6B6B6B',
-              textTransform: 'uppercase',
-            }}
-          >
-            Craft Brewery · Downtown · Est. 2024
-          </span>
-        </div>
-
-        <nav className="flex items-center gap-8">
-          {['Menu', 'About', 'Visit'].map((item) => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              style={{
-                fontFamily: "var(--font-grotesk), sans-serif",
-                fontSize: '0.68rem',
-                letterSpacing: '0.18em',
-                color: '#0A0A0A',
-                textDecoration: 'none',
-                textTransform: 'uppercase',
-              }}
-              data-cursor="hover"
-            >
-              {item}
-            </a>
-          ))}
-        </nav>
-      </div>{/* /section-container */}
-      </header>
+      {/* Spacer — matches fixed Navbar height so hero flex layout is preserved */}
+      <div aria-hidden="true" style={{ height: '5rem' }} />
 
       {/* ── Hero body – typography ──────────────────────────────*/}
-      <div className="section-container relative z-20 flex flex-col px-8 md:px-14" style={{ marginTop: 'auto' }}>
+      <div className="section-container relative z-20 flex flex-col px-8 md:px-14" >
 
         {/* Subheading above big title */}
         <p

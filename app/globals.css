@@ -21,7 +21,6 @@
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
-  padding: 0;
 }
 
 html {
@@ -37,44 +36,10 @@ body {
   color: #0A0A0A;
   font-family: var(--font-grotesk), 'Space Grotesk', system-ui, sans-serif;
   overflow-x: hidden;
-  cursor: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ─── Custom Cursor ─────────────────────────────────────────────── */
-.cursor-dot {
-  position: fixed;
-  top: 0; left: 0;
-  width: 6px; height: 6px;
-  background: #C41E3A;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  will-change: transform;
-  mix-blend-mode: multiply;
-}
-
-.cursor-ring {
-  position: fixed;
-  top: 0; left: 0;
-  width: 36px; height: 36px;
-  border: 1.5px solid #0A0A0A;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%, -50%);
-  will-change: transform;
-  transition: opacity 0.3s ease;
-}
-
-.cursor-ring.is-hovering {
-  width: 56px;
-  height: 56px;
-  border-color: #C41E3A;
-  background: rgba(196, 30, 58, 0.06);
-}
 
 /* ─── Grain Overlay ─────────────────────────────────────────────── */
 .grain-overlay {
@@ -101,6 +66,31 @@ body {
   80%  { transform: translate(-4%,  3%); }
   90%  { transform: translate(4%,  -5%); }
   100% { transform: translate(0,    0); }
+}
+
+/* ─── Navbar ────────────────────────────────────────────────────── */
+.site-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  border-bottom: 1px solid transparent;
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  transition:
+    background 0.4s ease,
+    box-shadow 0.4s ease,
+    border-bottom-color 0.4s ease,
+    backdrop-filter 0.4s ease;
+}
+
+.site-navbar.scrolled {
+  background: rgba(244, 239, 228, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
 }
 
 /* ─── Scroll Progress ───────────────────────────────────────────── */
@@ -138,7 +128,7 @@ body {
   letter-spacing: 0.25em;
   text-transform: uppercase;
   border: none;
-  cursor: none;
+  cursor: pointer;
   position: relative;
   overflow: hidden;
   transition: color 0.45s ease;
@@ -192,12 +182,31 @@ body {
   text-align: left;
 }
 
+.bottle-wrapper {
+  width: clamp(100px, 16vw, 240px);
+}
+
+.story-panel {
+  /* desktop default already set via inline style; class exists for mobile override */
+}
+
 @media (max-width: 768px) {
   .about-grid {
     grid-template-columns: 1fr;
   }
   .info-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* Correção 1 — Storytelling: reduz altura e espaçamentos no mobile */
+  .story-panel {
+    min-height: 60svh !important;
+    padding-bottom: clamp(2rem, 6vh, 4rem) !important;
+  }
+
+  /* Correção 2 — Garrafa: aumenta tamanho no mobile para 65vw */
+  .bottle-wrapper {
+    width: clamp(54px, 20vw, 84px);
   }
 }
 

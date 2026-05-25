@@ -4,8 +4,7 @@ import './globals.css'
 import { SmoothScrollProvider } from '@/components/providers/SmoothScrollProvider'
 import { GrainOverlay } from '@/components/ui/GrainOverlay'
 import { ScrollProgress } from '@/components/ui/ScrollProgress'
-import { CustomCursor } from '@/components/ui/CustomCursor'
-import { MobileNav } from '@/components/ui/MobileNav'
+import { Navbar } from '@/components/ui/Navbar'
 
 const bebasNeue = Bebas_Neue({
   weight: '400',
@@ -49,8 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SmoothScrollProvider>
           <GrainOverlay />
           <ScrollProgress />
-          <CustomCursor />
-          <MobileNav />
+<Navbar />
           {children}
         </SmoothScrollProvider>
       </body>

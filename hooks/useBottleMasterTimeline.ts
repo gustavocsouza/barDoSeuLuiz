@@ -15,6 +15,9 @@ export function useBottleMasterTimeline(
     const float   = floatRef.current
     if (!wrapper || !float) return
 
+    const isMobile = window.innerWidth < 768
+    const s = (v: number) => isMobile ? v * 1.8 : v
+
     const vw = () => window.innerWidth  / 100
     const vh = () => window.innerHeight / 100
 
@@ -22,10 +25,10 @@ export function useBottleMasterTimeline(
     gsap.set(wrapper, {
       xPercent: -50,
       yPercent: -50,
-      x: 0,
+      x: isMobile ? 85 : 85,
       y: 0,
-      scale: 1.35,
-      rotation: -3,
+      scale: s(1.35),
+      rotation: 5,
       opacity: 0,
     })
 
@@ -70,7 +73,7 @@ export function useBottleMasterTimeline(
       masterTL
         // Phase 0→1 : Hero idle ─ bottle settles very slightly
         .to(wrapper, {
-          scale: 1.25,
+          scale: s(1.25),
           rotation: 2,
           duration: 1,
           ease: 'none',
@@ -78,29 +81,29 @@ export function useBottleMasterTimeline(
 
         // Phase 1→3 : Storytelling — travels right & up
         .to(wrapper, {
-          x: () => vw() * 28,
-          y: () => -vh() * 8,
-          scale: 0.88,
-          rotation: 14,
+          x: () => isMobile ? vw() * -25 : vw() * 28,
+          y: () => isMobile ? -vh() * 5  : -vh() * 8,
+          scale: s(1.20),
+          rotation: -14,
           duration: 2,
           ease: 'power2.inOut',
         }, 1)
 
         // Phase 3→5 : Storytelling mid — swings left
         .to(wrapper, {
-          x: () => -vw() * 30,
-          y: () =>  vh() * 6,
-          scale: 0.72,
-          rotation: -12,
+          x: () => isMobile ? -vw() * -20 : -vw() * 30,
+          y: () => isMobile ?  vh() * 15 :  vh() * 6,
+          scale: s(1.15),
+          rotation: 12,
           duration: 2,
           ease: 'power2.inOut',
         }, 3)
 
         // Phase 5→7 : About section — settles right, smaller
         .to(wrapper, {
-          x: () => vw() * 33,
-          y: () => vh() * 10,
-          scale: 0.62,
+          x: () => isMobile ? vw() * 18  : vw() * 33,
+          y: () => isMobile ? vh() * 8   : vh() * 10,
+          scale: s(1.10),
           rotation: 7,
           duration: 2,
           ease: 'power2.inOut',
@@ -108,10 +111,10 @@ export function useBottleMasterTimeline(
 
         // Phase 7→9 : Menu section — drifts through center
         .to(wrapper, {
-          x: () => -vw() * 8,
-          y: () => -vh() * 5,
-          scale: 0.58,
-          rotation: -4,
+          x: () => isMobile ? -vw() * 20  : -vw() * 8,
+          y: () => isMobile ? -vh() * 3  : -vh() * 5,
+          scale: s(1.05),
+          rotation: -15,
           duration: 2,
           ease: 'power2.inOut',
         }, 7)
@@ -120,7 +123,7 @@ export function useBottleMasterTimeline(
         .to(wrapper, {
           x: 0,
           y: 0,
-          scale: 3.2,
+          scale: s(3.2),
           rotation: 0,
           opacity: 0.07,
           duration: 2,
@@ -131,12 +134,19 @@ export function useBottleMasterTimeline(
         .to(wrapper, {
           x: 0,
           y: 0,
-          scale: 1.3,
+          scale: s(1.3),
           rotation: -2,
           opacity: 1,
           duration: 3,
           ease: 'expo.out',
         }, 11)
+
+        // Phase 14→16 : CTA scroll fade — bottle disappears as user moves through the section
+        .to(wrapper, {
+          opacity: 0,
+          duration: 2,
+          ease: 'power2.in',
+        }, 14)
 
       ScrollTrigger.create({
         trigger: document.documentElement,

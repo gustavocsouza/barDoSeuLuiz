@@ -141,6 +141,7 @@ export function StorytellingSection() {
         <div
           key={panel.word}
           ref={(el) => { panelRefs.current[i] = el }}
+          className="story-panel"
           style={{
             minHeight: '100svh',
             display: 'flex',
