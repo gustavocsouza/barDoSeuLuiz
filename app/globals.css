@@ -221,3 +221,11 @@ body {
   display: flex;
   white-space: nowrap;
 }
+
+@media (min-width: 768px) {
+  .familia-panel {
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+}

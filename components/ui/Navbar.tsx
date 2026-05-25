@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState, useCallback } from 'react'
+import Image from 'next/image'
 import { gsap } from 'gsap'
 
 const NAV_LINKS = [
@@ -77,16 +78,14 @@ export function Navbar() {
       >
         <div className="section-container flex items-center justify-between px-8 py-4 md:px-14 md:py-5">
           {/* Logo */}
-          <div
-            style={{
-              fontFamily: "var(--font-bebas), sans-serif",
-              fontSize: '1.15rem',
-              letterSpacing: '0.18em',
-              color: '#0A0A0A',
-            }}
-          >
-            IRON CROW
-          </div>
+          <Image
+            src="/images/logo-bdl.png"
+            alt="Bar do Luiz Fernandes"
+            width={120}
+            height={60}
+            className="w-14 md:w-20"
+            style={{ objectFit: 'contain', height: 'auto' }}
+          />
 
           {/* Center tagline — desktop only */}
           <div
@@ -103,7 +102,7 @@ export function Navbar() {
                 textTransform: 'uppercase',
               }}
             >
-              Craft Brewery · Downtown · Est. 2024
+              Boteco Tradicional · Mandaqui · Est. 1970
             </span>
           </div>
 
@@ -228,7 +227,7 @@ export function Navbar() {
               textTransform: 'uppercase',
             }}
           >
-            Iron Crow Brewery · Est. 2024
+            Bar do Luiz Fernandes · Est. 1970
           </p>
         </div>
       )}

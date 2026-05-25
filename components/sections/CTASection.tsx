@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import Image from 'next/image'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import SplitType from 'split-type'
@@ -145,7 +146,7 @@ export function CTASection() {
             marginBottom: '1.5rem',
           }}
         >
-          Come find us
+          Nos Encontre
         </p>
 
         {/* Main headline — bottle returns here as hero visual */}
@@ -161,7 +162,7 @@ export function CTASection() {
               color: '#0A0A0A',
             }}
           >
-            VISIT US<br />TONIGHT
+            VENHA NOS<br />VISITAR
           </h2>
         </div>
 
@@ -178,7 +179,7 @@ export function CTASection() {
             margin: '0 auto 3rem',
           }}
         >
-          The bar is open. The tank is full. The only thing missing is you.
+          O boteco está aberto. O petisco está fresquinho. Só falta você.
         </p>
 
         {/* Info grid */}
@@ -187,9 +188,9 @@ export function CTASection() {
           className="info-grid"
         >
           {[
-            { label: 'Address', value: '123 Crow Street\nDowntown District' },
-            { label: 'Hours',   value: 'Mon – Thu  4pm – 12am\nFri – Sun  12pm – 2am' },
-            { label: 'Contact', value: '(555) 123-4567\nhello@ironcrow.co' },
+            { label: 'Endereço', value: 'Rua Augusto Tolle, 610\nMandaqui, São Paulo' },
+            { label: 'Horários', value: 'Ter–Sex  16h00 – 24h00\nSáb  11h00 – 20h00  ·  Dom  11h00 – 18h00' },
+            { label: 'Contato',  value: '(11) 2976-3556\nbar.luiz@terra.com.br' },
           ].map(({ label, value }) => (
             <div
               key={label}
@@ -219,7 +220,8 @@ export function CTASection() {
         {/* CTA button */}
         <div ref={ctaRef} style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
           <button className="btn-premium" data-cursor="hover" type="button">
-            <span>Reserve a Table</span>
+            <Image src="/images/logo-ifood.png" alt="iFood" width={24} height={24} style={{ objectFit: 'contain' }} />
+            <span>Pedir pelo iFood</span>
             <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
               <path d="M1 5H13M9 1L13 5L9 9" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
@@ -245,7 +247,7 @@ export function CTASection() {
               transition: 'border-color 0.3s ease, color 0.3s ease',
             }}
           >
-            <span>See Our Menu</span>
+            <span>Ver o Cardápio</span>
           </button>
         </div>
 
@@ -262,11 +264,9 @@ export function CTASection() {
             gap: '1rem',
           }}
         >
-          <span style={{ fontFamily: "var(--font-bebas), sans-serif", fontSize: '1rem', letterSpacing: '0.14em', color: '#0A0A0A' }}>
-            IRON CROW BREWERY
-          </span>
+          <Image src="/images/logo-bdl.png" alt="Bar do Luiz Fernandes" width={100} height={50} style={{ objectFit: 'contain' }} />
           <div style={{ display: 'flex', gap: '2rem' }}>
-            {['Instagram', 'Facebook', 'Untappd'].map((s) => (
+            {['Instagram', 'Facebook', 'iFood'].map((s) => (
               <a
                 key={s}
                 href="#"
@@ -286,7 +286,7 @@ export function CTASection() {
             ))}
           </div>
           <span style={{ fontFamily: "var(--font-grotesk), sans-serif", fontSize: '0.6rem', letterSpacing: '0.15em', color: '#6B6B6B', textTransform: 'uppercase' }}>
-            © 2024 Iron Crow
+            © 1970 Bar do Luiz Fernandes
           </span>
         </div>
       </div>

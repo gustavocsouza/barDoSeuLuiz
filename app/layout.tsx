@@ -29,11 +29,11 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: 'Iron Crow Brewery — Craft Beer & Bar',
-  description: 'Small-batch craft beer brewed with obsession. Downtown bar experience since 2024.',
+  title: 'Bar do Luiz Fernandes — Boteco com alma desde 1970',
+  description: 'Os petiscos mais gostosos de toda Zona Norte! Boteco tradicional no Mandaqui, São Paulo, desde 1970.',
   openGraph: {
-    title: 'Iron Crow Brewery',
-    description: 'Brewed with obsession.',
+    title: 'Bar do Luiz Fernandes',
+    description: 'Boteco com alma desde 1970.',
     type: 'website',
   },
 }
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
-      lang="en"
+      lang="pt-BR"
       className={`${bebasNeue.variable} ${libreBaskerville.variable} ${spaceGrotesk.variable}`}
     >
       <body>

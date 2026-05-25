@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import Image from 'next/image'
 import { gsap } from 'gsap'
 import SplitType from 'split-type'
 
@@ -119,8 +120,12 @@ export function HeroSection() {
         height: '100svh',
         minHeight: '600px',
         backgroundColor: '#F4EFE4',
+        position: 'relative',
       }}
     >
+      {/* Background image */}
+      <Image src="/images/bar-hero.png" alt="" fill style={{ objectFit: 'cover', opacity: 0.12 }} aria-hidden />
+
       {/* ── Giant background typography ───────────────────────── */}
       <div
         ref={bgTextRef}
@@ -142,7 +147,7 @@ export function HeroSection() {
           zIndex: 1,
         }}
       >
-        CROW
+        BDL
       </div>
 
       {/* Spacer — matches fixed Navbar height so hero flex layout is preserved */}
@@ -162,7 +167,7 @@ export function HeroSection() {
             marginBottom: '0.6rem',
           }}
         >
-          Small-batch · Handcrafted
+          Boteco tradicional · Desde 1970
         </p>
 
         {/* Giant headline */}
@@ -178,7 +183,7 @@ export function HeroSection() {
               transformOrigin: 'bottom left',
             }}
           >
-            BREWED<br />WITH<br />OBSESSION
+            PETISCOS<br />COM<br />ALMA
           </h1>
         </div>
       </div>
@@ -200,15 +205,15 @@ export function HeroSection() {
             lineHeight: 1.55,
           }}
         >
-          A bar that takes its beer as seriously as its art.
-          Downtown, every night.
+          O boteco mais tradicional da Zona Norte.
+          Todo dia, desde 1970.
         </p>
 
         {/* Decorative rule */}
         <div ref={lineRef} className="hidden md:flex items-center gap-4">
           <div style={{ width: '60px', height: '1px', background: 'rgba(10,10,10,0.2)' }} />
           <span style={{ fontFamily: "var(--font-grotesk), sans-serif", fontSize: '0.6rem', letterSpacing: '0.25em', color: '#6B6B6B', textTransform: 'uppercase' }}>
-            6.5% ABV · 355ml
+            Mandaqui · São Paulo
           </span>
         </div>
 

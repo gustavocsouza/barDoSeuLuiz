@@ -1,57 +1,62 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import Image from 'next/image'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-const BEERS = [
+const PETISCOS = [
   {
-    id: 'ipa',
+    id: 'bolinho-carne',
     num: '01',
-    name: 'Iron Crow IPA',
-    style: 'India Pale Ale',
-    abv: '7.2%',
-    ibu: '65 IBU',
-    color: '#C9920D',
-    desc: 'A relentless hop assault balanced by a clean malt backbone. Citrus, pine, and a long bitter finish that demands another sip.',
-    notes: ['Citrus', 'Pine', 'Tropical fruit'],
-    tagline: 'Hops that hit like a freight train.',
-  },
-  {
-    id: 'stout',
-    num: '02',
-    name: 'Dark Crow Stout',
-    style: 'Imperial Stout',
-    abv: '6.8%',
-    ibu: '42 IBU',
-    color: '#1A0900',
-    desc: 'Darkness you can taste. Rich chocolate and roasted espresso with a silky body and warm finish.',
-    notes: ['Dark chocolate', 'Espresso', 'Molasses'],
-    tagline: 'Darkness has a flavor.',
-  },
-  {
-    id: 'wheat',
-    num: '03',
-    name: 'Crow Wheat',
-    style: 'American Wheat',
-    abv: '4.5%',
-    ibu: '18 IBU',
-    color: '#E8B840',
-    desc: 'Light as an afternoon. Hazy, crisp, with a subtle spice from our Belgian yeast strain.',
-    notes: ['Lemon zest', 'Clove', 'Biscuit'],
-    tagline: 'Light as a feather, complex as silence.',
-  },
-  {
-    id: 'amber',
-    num: '04',
-    name: 'Red Crow Amber',
-    style: 'American Amber',
-    abv: '5.8%',
-    ibu: '30 IBU',
+    name: 'Bolinho de Carne',
+    style: 'Petisco Clássico',
+    abv: '★★★',
+    ibu: 'Desde 1970',
     color: '#A03010',
-    desc: 'The color of a perfect sunset. Caramel malt sweetness, a touch of earthy hops, and a clean, dry finish.',
-    notes: ['Caramel', 'Toasted bread', 'Dried fruit'],
-    tagline: 'The color of a perfect sunset.',
+    desc: 'O mais tradicional da casa. Vencedor do prêmio Melhor Petisco da Veja SP (2013) e Melhor Petisco Datafolha (2015). Um clássico inigualável.',
+    notes: ['Premiado', 'Tradicional', 'Ícone'],
+    tagline: 'O bolinho que fez história.',
+    image: '/images/petisco-bolinho-carne.jpg',
+  },
+  {
+    id: 'surpresa-idalina',
+    num: '02',
+    name: 'Surpresa da Dona Idalina',
+    style: 'Petisco Campeão',
+    abv: '★★★',
+    ibu: 'Boteco Bohemia 2006',
+    color: '#C9920D',
+    desc: 'Carne moída, tomate seco e… surpresa. Vencedor do Boteco Bohemia 2006 e do Concurso de Botequim do programa Mais Você (Ana Maria Braga).',
+    notes: ['Premiado', 'Exclusivo', 'Surpresa'],
+    tagline: 'Todo quitute vira obra de arte.',
+    image: '/images/petisco-surpresa-idalina.jpg',
+  },
+  {
+    id: 'quarentinha',
+    num: '03',
+    name: 'Quarentinha',
+    style: 'Petisco Especial',
+    abv: '★★★',
+    ibu: 'Receita Autoral',
+    color: '#E8B840',
+    desc: 'Massa de batata, muçarela ralada, tomate seco, manjericão, miolo de alcachofra e aliche. Uma combinação de sabores intensa e memorável.',
+    notes: ['Autoral', 'Intenso', 'Especial'],
+    tagline: 'Uma explosão de sabor em cada mordida.',
+    image: null,
+  },
+  {
+    id: 'bolinho-bacalhau',
+    num: '04',
+    name: 'Bolinho de Bacalhau',
+    style: 'Petisco Tradicional',
+    abv: '★★★',
+    ibu: '2º Lugar Concurso',
+    color: '#6B6B6B',
+    desc: 'Receita tradicional, segundo lugar no concurso de petiscos. Crocante por fora, macio por dentro — um clássico da culinária portuguesa adaptado com alma paulistana.',
+    notes: ['Clássico', 'Crocante', 'Premiado'],
+    tagline: 'Tradição que cruza gerações.',
+    image: null,
   },
 ]
 
@@ -138,7 +143,7 @@ export function MenuSection() {
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
           <div>
             <p style={{ fontFamily: "var(--font-grotesk), sans-serif", fontSize: '0.62rem', letterSpacing: '0.3em', color: '#C41E3A', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
-              On Tap
+              Petiscos
             </p>
             <h2
               style={{
@@ -149,11 +154,11 @@ export function MenuSection() {
                 color: '#0A0A0A',
               }}
             >
-              WHAT&apos;S<br />ON TAP
+              NOSSO<br />CARDÁPIO
             </h2>
           </div>
           <p style={{ fontFamily: "var(--font-libre), Georgia, serif", fontSize: '0.95rem', fontStyle: 'italic', color: '#6B6B6B', maxWidth: '28ch', lineHeight: 1.6 }}>
-            Four rotating recipes. Brewed on-site. Always fresh.
+            Petiscos premiados. Feitos na hora. Tradição de 50 anos.
           </p>
         </div>
       </div>{/* /section-container */}
@@ -171,7 +176,7 @@ export function MenuSection() {
           border: '1px solid rgba(10,10,10,0.08)',
         }}
       >
-        {BEERS.map((beer, i) => (
+        {PETISCOS.map((beer, i) => (
           <div
             key={beer.id}
             ref={(el) => { cardRefs.current[i] = el }}
@@ -202,6 +207,13 @@ export function MenuSection() {
                 transformOrigin: 'left',
               }}
             />
+
+            {/* Card image */}
+            {beer.image && (
+              <div style={{ position: 'relative', width: '100%', height: '160px', marginBottom: '1rem', overflow: 'hidden' }}>
+                <Image src={beer.image} alt={beer.name} fill style={{ objectFit: 'cover' }} />
+              </div>
+            )}
 
             {/* Top section */}
             <div>

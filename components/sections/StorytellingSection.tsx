@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import Image from 'next/image'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import SplitType from 'split-type'
@@ -8,25 +9,37 @@ import SplitType from 'split-type'
 const PANELS = [
   {
     num: '01',
-    word: 'CRAFTED',
-    accent: 'Every grain selected.',
-    body: 'We source rare malts from independent farms. Small batches — never more than 200 litres — so every keg that leaves our tank carries a name.',
+    word: 'HISTÓRIA',
+    accent: 'Tudo começou num empório.',
+    body: 'Em 1942, Eduardo e Idalina Fernandes tocavam um pequeno armazém na Rua Augusto Tolle com o lema: "Produtos nacionais e estrangeiros. Não tememos concorrência."',
     align: 'left' as const,
   },
   {
     num: '02',
-    word: 'FERMENTED',
-    accent: 'Time does the heavy lifting.',
-    body: 'Cold fermentation. Wild yeast strains. Zero shortcuts. Our IPA rests for 28 days before it earns the label.',
+    word: 'TRADIÇÃO',
+    accent: 'O boteco nasceu em 1970.',
+    body: 'Seu Luiz transformou a mercearia num bar no Mandaqui. Ali já reinava o famoso bolinho de carne — consumido no local ou levado para casa, acompanhado de batidas artesanais.',
     align: 'center' as const,
   },
   {
     num: '03',
-    word: 'OBSESSED',
-    accent: 'This is what we live for.',
-    body: 'Iron Crow was built by people who couldn\'t stop thinking about beer. That obsession goes into every pour.',
+    word: 'FAMÍLIA',
+    accent: 'Quatro gerações no balcão.',
+    body: 'De Eduardo aos 12 anos atendendo mesas, a Catarina idealizando os congelados e Clara cuidando do novo rótulo das batidas — o Bar do Luiz é feito por quem ama.',
     align: 'right' as const,
   },
+]
+
+const EQUIPE = [
+  { name: 'Eduardo',      img: '/images/equipe-eduardo.png' },
+  { name: 'Idalina',      img: '/images/equipe-idalina.png' },
+  { name: 'Seu Luiz',     img: '/images/equipe-seu-luiz.png' },
+  { name: 'Dona Idalina', img: '/images/equipe-dona-idalina.png' },
+  { name: 'Luiz Eduardo', img: '/images/equipe-luiz-eduardo.png' },
+  { name: 'Catarina',     img: '/images/equipe-catarina.png' },
+  { name: 'Carol',        img: '/images/equipe-carol.png' },
+  { name: 'Clara',        img: '/images/equipe-clara.png' },
+  { name: 'Rita',         img: '/images/equipe-rita.png' },
 ]
 
 export function StorytellingSection() {
@@ -128,10 +141,10 @@ export function StorytellingSection() {
           }}
         >
           <span style={{ fontFamily: "var(--font-grotesk), sans-serif", fontSize: '0.62rem', letterSpacing: '0.28em', color: '#6B6B6B', textTransform: 'uppercase' }}>
-            The Process
+            A História
           </span>
           <span style={{ fontFamily: "var(--font-grotesk), sans-serif", fontSize: '0.62rem', letterSpacing: '0.28em', color: '#6B6B6B', textTransform: 'uppercase' }}>
-            Iron Crow Brewery
+            Bar do Luiz Fernandes
           </span>
         </div>
       </div>
@@ -141,7 +154,7 @@ export function StorytellingSection() {
         <div
           key={panel.word}
           ref={(el) => { panelRefs.current[i] = el }}
-          className="story-panel"
+          className={`story-panel${i === 2 ? ' familia-panel' : ''}`}
           style={{
             minHeight: '100svh',
             display: 'flex',
@@ -156,6 +169,10 @@ export function StorytellingSection() {
             textAlign: panel.align,
           }}
         >
+          {/* Panel background images */}
+          {i === 0 && (
+            <Image src="/images/bar-parede-azul.jpg" alt="" fill style={{ objectFit: 'cover', opacity: 0.07 }} aria-hidden />
+          )}
           {/* Background number */}
           <div
             aria-hidden="true"
@@ -176,6 +193,66 @@ export function StorytellingSection() {
           >
             {panel.num}
           </div>
+
+          {/* Foto grid — desktop only, painel FAMÍLIA */}
+          {i === 2 && (
+            <div
+              className="hidden md:flex"
+              style={{
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '1.5rem',
+                position: 'relative',
+                zIndex: 10,
+                flexShrink: 0,
+              }}
+            >
+              <p style={{
+                fontFamily: "var(--font-grotesk), sans-serif",
+                fontSize: '0.6rem',
+                letterSpacing: '0.3em',
+                color: '#C41E3A',
+                textTransform: 'uppercase',
+              }}>
+                — A Equipe
+              </p>
+
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3, 1fr)',
+                gap: '1.75rem',
+              }}>
+                {EQUIPE.map(({ name, img }) => (
+                  <div key={name} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.6rem' }}>
+                    <div style={{
+                      width: '92px',
+                      height: '92px',
+                      borderRadius: '50%',
+                      overflow: 'hidden',
+                      border: '2px solid #C9920D',
+                      position: 'relative',
+                      flexShrink: 0,
+                      boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+                    }}>
+                      <Image src={img} alt={name} fill style={{ objectFit: 'cover' }} />
+                    </div>
+                    <span style={{
+                      fontFamily: "var(--font-grotesk), sans-serif",
+                      fontSize: '0.56rem',
+                      letterSpacing: '0.15em',
+                      textTransform: 'uppercase',
+                      color: '#6B6B6B',
+                      textAlign: 'center',
+                      lineHeight: 1.3,
+                    }}>
+                      {name}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Content */}
           <div style={{ position: 'relative', zIndex: 10, maxWidth: '720px' }}>
@@ -254,6 +331,7 @@ export function StorytellingSection() {
               {panel.body}
             </p>
           </div>
+
         </div>
       ))}
     </section>

@@ -15,7 +15,7 @@ export function BeerBottle({ className = '' }: BeerBottleProps) {
      * Rename it to "bottle.png" in /public and update src below if needed.
      */
     <Image
-      src="/bottle.png.png"
+      src="/bottle.png"
       alt="Iron Crow craft beer bottle"
       width={400}
       height={1100}

@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import Image from 'next/image'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import SplitType from 'split-type'
@@ -105,7 +106,7 @@ export function AboutSection() {
           style={{ padding: '2.5rem 3.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
         >
           <span style={{ fontFamily: "var(--font-grotesk), sans-serif", fontSize: '0.62rem', letterSpacing: '0.28em', color: '#6B6B6B', textTransform: 'uppercase' }}>
-            Our Story
+            Nossa História
           </span>
           <div style={{ width: '40px', height: '1px', background: 'rgba(10,10,10,0.15)' }} />
         </div>
@@ -123,31 +124,8 @@ export function AboutSection() {
             backgroundColor: '#1A0E00',
           }}
         >
-          {/* Stylized brewery image placeholder */}
-          <div
-            className="img-inner"
-            style={{
-              position: 'absolute',
-              inset: '-15% 0',
-              background: `
-                radial-gradient(ellipse at 30% 40%, rgba(200, 100, 0, 0.25) 0%, transparent 60%),
-                radial-gradient(ellipse at 70% 70%, rgba(180, 60, 0, 0.18) 0%, transparent 50%),
-                linear-gradient(165deg, #1A0900 0%, #2D1200 35%, #1A0900 60%, #0D0600 100%)
-              `,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            {/* Decorative brew vessel illustration */}
-            <svg viewBox="0 0 300 400" style={{ width: '55%', opacity: 0.18 }} aria-hidden="true">
-              <circle cx="150" cy="180" r="90" fill="none" stroke="#C9920D" strokeWidth="1.5" />
-              <circle cx="150" cy="180" r="70" fill="none" stroke="#C9920D" strokeWidth="0.8" strokeDasharray="4 6" />
-              <rect x="110" y="270" width="80" height="100" rx="4" fill="none" stroke="#C9920D" strokeWidth="1.5" />
-              <rect x="130" y="90" width="40" height="90" rx="20" fill="none" stroke="#C9920D" strokeWidth="1.5" />
-              <line x1="60" y1="180" x2="240" y2="180" stroke="#C9920D" strokeWidth="0.5" strokeDasharray="3 5" />
-              <text x="150" y="186" textAnchor="middle" fontFamily="serif" fontSize="14" fill="#C9920D" opacity="0.7" letterSpacing="3">BREW</text>
-            </svg>
+          <div className="img-inner" style={{ position: 'absolute', inset: 0 }}>
+            <Image src="/images/bar-cheio.jpeg" alt="Bar do Luiz Fernandes lotado" fill style={{ objectFit: 'cover' }} />
           </div>
 
           {/* Image overlay text */}
@@ -169,7 +147,7 @@ export function AboutSection() {
                 display: 'block',
               }}
             >
-              Iron Crow Brewery — Downtown
+              Bar do Luiz Fernandes — Mandaqui, SP
             </span>
           </div>
         </div>
@@ -195,7 +173,7 @@ export function AboutSection() {
               marginBottom: '1.5rem',
             }}
           >
-            The Art of Craft
+            Mais de 50 Anos
           </p>
 
           {/* Headline */}
@@ -210,7 +188,7 @@ export function AboutSection() {
                 color: '#0A0A0A',
               }}
             >
-              Born from a<br />single obsession
+              Nascido de uma<br />família e uma paixão
             </h2>
           </div>
 
@@ -226,7 +204,7 @@ export function AboutSection() {
                 marginBottom: '1.2rem',
               }}
             >
-              &ldquo;We started with one question: what would the perfect beer taste like? Three years and 200 batches later, Iron Crow was born.&rdquo;
+              &ldquo;Seu Luiz transformou uma mercearia num boteco e criou o petisco mais premiado da Zona Norte.&rdquo;
             </p>
             <p
               style={{
@@ -237,7 +215,7 @@ export function AboutSection() {
                 maxWidth: '46ch',
               }}
             >
-              Founded in 2024, our downtown brewery is open to the public every afternoon. Watch our brewers at work, taste directly from the tank, and understand why small-batch means everything.
+              Fundado em 1970 no Mandaqui, o Bar do Luiz Fernandes é aberto ao público de terça a domingo. Venha provar diretamente os petiscos premiados e entender por que tradição tem sabor.
             </p>
           </div>
 
@@ -254,9 +232,9 @@ export function AboutSection() {
             }}
           >
             {[
-              { num: '200L', label: 'Max batch size' },
-              { num: '28',   label: 'Days fermented' },
-              { num: '4',    label: 'Core recipes' },
+              { num: '1970', label: 'Ano de fundação' },
+              { num: '50+',  label: 'Anos de tradição' },
+              { num: '4',    label: 'Gerações da família' },
             ].map(({ num, label }) => (
               <div key={num}>
                 <div
@@ -311,7 +289,7 @@ export function AboutSection() {
                 whiteSpace: 'nowrap',
               }}
             >
-              IRON CROW BREWERY &nbsp;·&nbsp; CRAFT BEER &nbsp;·&nbsp; EST. 2024 &nbsp;·
+              BAR DO LUIZ FERNANDES &nbsp;·&nbsp; BOTECO COM ALMA &nbsp;·&nbsp; EST. 1970 &nbsp;·
             </span>
           ))}
         </div>

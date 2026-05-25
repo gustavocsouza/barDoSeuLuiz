@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import Image from 'next/image'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import SplitType from 'split-type'
@@ -18,7 +19,7 @@ export function ExperienceSection() {
     const pin     = pinRef.current
     if (!section || !pin) return
 
-    let splits: SplitType[] = []
+    const splits: SplitType[] = []
 
     const ctx = gsap.context(() => {
       // ── Split both headline lines ────────────────────────────
@@ -108,8 +109,10 @@ export function ExperienceSection() {
       style={{
         backgroundColor: '#0A0A0A',
         overflow: 'hidden',
+        position: 'relative',
       }}
     >
+      <Image src="/images/bar-ambiente.jpg" alt="" fill style={{ objectFit: 'cover', opacity: 0.15 }} aria-hidden />
       <div
         ref={pinRef}
         style={{
@@ -136,7 +139,7 @@ export function ExperienceSection() {
         >
           <div style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#C41E3A' }} />
           <span style={{ fontFamily: "var(--font-grotesk), sans-serif", fontSize: '0.58rem', letterSpacing: '0.28em', color: 'rgba(244,239,228,0.35)', textTransform: 'uppercase' }}>
-            The Experience
+            A Experiência
           </span>
         </div>
 
@@ -176,7 +179,7 @@ export function ExperienceSection() {
                 display: 'block',
               }}
             >
-              DRINK
+              BOTECO
             </h2>
           </div>
 
@@ -194,7 +197,7 @@ export function ExperienceSection() {
                 display: 'block',
               }}
             >
-              DIFFERENT
+              DE VERDADE
             </h2>
           </div>
         </div>
@@ -213,8 +216,8 @@ export function ExperienceSection() {
             marginTop: '3rem',
           }}
         >
-          Every glass is a declaration of intent.
-          We don&apos;t brew for the masses — we brew for the moment.
+          Cada petisco é uma declaração de amor.
+          Não fazemos para as massas — fazemos para quem sabe o que é bom.
         </p>
 
         {/* Bottom decorative rule */}
@@ -231,7 +234,7 @@ export function ExperienceSection() {
         >
           <div style={{ width: '40px', height: '1px', background: 'rgba(244,239,228,0.15)' }} />
           <span style={{ fontFamily: "var(--font-grotesk), sans-serif", fontSize: '0.58rem', letterSpacing: '0.25em', color: 'rgba(244,239,228,0.25)', textTransform: 'uppercase' }}>
-            Iron Crow · Downtown
+            Bar do Luiz · Mandaqui
           </span>
           <div style={{ width: '40px', height: '1px', background: 'rgba(244,239,228,0.15)' }} />
         </div>
