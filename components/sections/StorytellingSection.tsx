@@ -220,14 +220,14 @@ export function StorytellingSection() {
 
               <div style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(3, 1fr)',
+                gridTemplateColumns: 'repeat(4, 1fr)',
                 gap: '1.75rem',
               }}>
                 {EQUIPE.map(({ name, img }) => (
                   <div key={name} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.6rem' }}>
                     <div style={{
-                      width: '92px',
-                      height: '92px',
+                      width: '150px',
+                      height: '150px',
                       borderRadius: '50%',
                       overflow: 'hidden',
                       border: '2px solid #C9920D',

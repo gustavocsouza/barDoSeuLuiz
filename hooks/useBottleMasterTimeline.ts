@@ -40,12 +40,14 @@ export function useBottleMasterTimeline(
       gsap.to(float, {
         x: mouseX * 8,
         y: mouseY * 5,
-        duration: 1.2,
-        ease: 'power1.out',
+        duration: 2,
+        ease: 'power2.out',
         overwrite: 'auto',
       })
     }
     window.addEventListener('mousemove', onMouseMove)
+
+    let ticker: (() => void) | null = null
 
     // ── Wrap all GSAP in a context so cleanup is isolated ──────
     const ctx = gsap.context(() => {
@@ -59,9 +61,9 @@ export function useBottleMasterTimeline(
 
       // ── Continuous floating loop on the inner wrapper ────────
       gsap.to(float, {
-        y: '+=18',
-        rotation: '+=2.5',
-        duration: 2.8,
+        y: '+=22',
+        rotation: '+=2',
+        duration: 3.6,
         ease: 'sine.inOut',
         repeat: -1,
         yoyo: true,
@@ -76,7 +78,7 @@ export function useBottleMasterTimeline(
           scale: s(1.25),
           rotation: 2,
           duration: 1,
-          ease: 'none',
+          ease: 'power1.inOut',
         }, 0)
 
         // Phase 1→3 : Storytelling — travels right & up
@@ -86,7 +88,7 @@ export function useBottleMasterTimeline(
           scale: s(1.20),
           rotation: -14,
           duration: 2,
-          ease: 'power2.inOut',
+          ease: 'power3.inOut',
         }, 1)
 
         // Phase 3→5 : Storytelling mid — swings left
@@ -96,7 +98,7 @@ export function useBottleMasterTimeline(
           scale: s(1.15),
           rotation: 12,
           duration: 2,
-          ease: 'power2.inOut',
+          ease: 'power3.inOut',
         }, 3)
 
         // Phase 5→7 : About section — settles right, smaller
@@ -106,7 +108,7 @@ export function useBottleMasterTimeline(
           scale: s(1.10),
           rotation: 7,
           duration: 2,
-          ease: 'power2.inOut',
+          ease: 'power3.inOut',
         }, 5)
 
         // Phase 7→9 : Menu section — drifts through center
@@ -116,7 +118,7 @@ export function useBottleMasterTimeline(
           scale: s(1.05),
           rotation: -15,
           duration: 2,
-          ease: 'power2.inOut',
+          ease: 'power3.inOut',
         }, 7)
 
         // Phase 9→11 : Experience — ghost giant
@@ -127,7 +129,7 @@ export function useBottleMasterTimeline(
           rotation: 0,
           opacity: 0.07,
           duration: 2,
-          ease: 'power2.inOut',
+          ease: 'power3.inOut',
         }, 9)
 
         // Phase 11→14 : CTA — triumphant return
@@ -148,15 +150,23 @@ export function useBottleMasterTimeline(
           ease: 'power2.in',
         }, 14)
 
+      let targetProgress  = 0
+      let currentProgress = 0
+
       ScrollTrigger.create({
         trigger: document.documentElement,
         start: 'top top',
         end: 'max',
-        scrub: 2,
         onUpdate: (self) => {
-          masterTL.progress(self.progress)
+          targetProgress = self.progress
         },
       })
+
+      ticker = () => {
+        currentProgress += (targetProgress - currentProgress) * 0.04
+        masterTL.progress(currentProgress)
+      }
+      gsap.ticker.add(ticker)
 
       // ── CTA z-index fix ──────────────────────────────────────
       // Drop bottle behind CTA content (z:10) when section enters
@@ -173,6 +183,7 @@ export function useBottleMasterTimeline(
     })
 
     return () => {
+      if (ticker) gsap.ticker.remove(ticker)
       ctx.revert()
       window.removeEventListener('mousemove', onMouseMove)
     }

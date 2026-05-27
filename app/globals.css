@@ -226,6 +226,6 @@ body {
   .familia-panel {
     flex-direction: row !important;
     align-items: center !important;
-    justify-content: space-between !important;
+    justify-content: space-evenly !important;
   }
 }

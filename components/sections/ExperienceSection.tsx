@@ -195,6 +195,7 @@ export function ExperienceSection() {
                 color: 'transparent',
                 WebkitTextStroke: '2px #C41E3A',
                 display: 'block',
+                whiteSpace: 'nowrap',
               }}
             >
               DE VERDADE
